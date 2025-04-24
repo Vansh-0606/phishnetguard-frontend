@@ -1,0 +1,949 @@
+/* General Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: #f5f5f5;
+  color: #000;
+  overflow-x: hidden;
+}
+
+.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+/* ===================== */
+/* HEADER with FADE-IN */
+/* ===================== */
+.site-header {
+  background-image: url("https://blog.knowbe4.com/hubfs/phishing-1.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeInHeader 2s ease-in-out forwards;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+@keyframes fadeInHeader {
+  to {
+    opacity: 1;
+  }
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInOverlay 2s ease-in-out forwards;
+}
+
+@keyframes fadeInOverlay {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #111;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 0.6rem 1.5rem;
+  border-radius: 10px;
+  display: block;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dark-mode .main-title,
+.dark-mode .subtitle {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* ===================== */
+/* TABS (Links styled as Buttons) */
+/* ===================== */
+.tabs {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #111;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tab-link {
+  text-decoration: none;
+}
+
+.tabs button {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #111;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.tabs button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.tabs button.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 3px solid #111;
+}
+
+.dark-mode .tabs {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+}
+
+.dark-mode .tabs button {
+  color: white;
+}
+
+.dark-mode .tabs button.active {
+  border-bottom: 3px solid #fff;
+}
+
+/* ===================== */
+/* PAGE CONTENT */
+/* ===================== */
+.page-content {
+  padding: 2rem;
+}
+
+/* Back Button */
+.back-button {
+  margin-bottom: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+/* Fade-in Animation for Pages */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================== */
+/* URL Checker */
+/* ===================== */
+.url-checker {
+  padding: 2rem;
+  text-align: center;
+}
+
+.url-input {
+  padding: 0.5rem;
+  width: 300px;
+  margin: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.url-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.check-btn {
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.check-btn:hover {
+  background-color: #0056b3;
+}
+
+.result {
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #007bff;
+}
+
+.dark-mode .result {
+  color: #66b2ff;
+}
+
+/* ===================== */
+/* Features Section */
+/* ===================== */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.feature-card {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: transform 0.2s;
+  background-color: white;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.dark-mode .feature-card {
+  background-color: #333;
+  border-color: #444;
+  color: white;
+}
+
+/* ===================== */
+/* Chatbot */
+/* ===================== */
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #007bff;
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 5;
+}
+
+/* ===================== */
+/* Dark Mode Toggle */
+/* ===================== */
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* ===================== */
+/* Loader Spinner */
+/* ===================== */
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 1rem auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===================== */
+/* Mobile Responsive Tweaks */
+/* ===================== */
+@media (max-width: 600px) {
+  .url-input {
+    width: 90%;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tabs button {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+}
+
+/* ===================== */
+/* Home Tab Content Styling */
+/* ===================== */
+.home-container {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .home-container {
+  background-color: rgba(30, 30, 30, 0.9);
+  color: #fff;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+  color: #007bff;
+}
+
+.dark-mode .section-title {
+  color: #66b2ff;
+  border-color: #66b2ff;
+}
+
+.section-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.section-paragraph a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.section-paragraph a:hover {
+  text-decoration: underline;
+}
+
+/* ===================== */
+/* Corner Message Styles */
+/* ===================== */
+.corner-message {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 5px;
+  animation: cornerMessageAnimation 5s linear infinite;
+  z-index: 1000;
+}
+
+@keyframes cornerMessageAnimation {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-10px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* General Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: #f5f5f5;
+  color: #000;
+  overflow-x: hidden;
+}
+
+.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+/* ===================== */
+/* HEADER with FADE-IN */
+/* ===================== */
+.site-header {
+  background-image: url("https://blog.knowbe4.com/hubfs/phishing-1.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeInHeader 2s ease-in-out forwards;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+@keyframes fadeInHeader {
+  to {
+    opacity: 1;
+  }
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInOverlay 2s ease-in-out forwards;
+}
+
+@keyframes fadeInOverlay {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #111;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 0.6rem 1.5rem;
+  border-radius: 10px;
+  display: block;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dark-mode .main-title,
+.dark-mode .subtitle {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* ===================== */
+/* TABS (Links styled as Buttons) */
+/* ===================== */
+.tabs {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #111;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tab-link {
+  text-decoration: none;
+}
+
+.tabs button {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #111;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.tabs button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.tabs button.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 3px solid #111;
+}
+
+.dark-mode .tabs {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+}
+
+.dark-mode .tabs button {
+  color: white;
+}
+
+.dark-mode .tabs button.active {
+  border-bottom: 3px solid #fff;
+}
+
+/* ===================== */
+/* PAGE CONTENT */
+/* ===================== */
+.page-content {
+  padding: 2rem;
+}
+
+/* Back Button */
+.back-button {
+  margin-bottom: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+/* Fade-in Animation for Pages */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================== */
+/* URL Checker */
+/* ===================== */
+.url-checker {
+  padding: 2rem;
+  text-align: center;
+}
+
+.url-input {
+  padding: 0.5rem;
+  width: 300px;
+  margin: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.url-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.check-btn {
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.check-btn:hover {
+  background-color: #0056b3;
+}
+
+.result {
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #007bff;
+}
+
+.dark-mode .result {
+  color: #66b2ff;
+}
+
+/* ===================== */
+/* Features Section */
+/* ===================== */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.feature-card {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: transform 0.2s;
+  background-color: white;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.dark-mode .feature-card {
+  background-color: #333;
+  border-color: #444;
+  color: white;
+}
+
+/* ===================== */
+/* Chatbot */
+/* ===================== */
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #007bff;
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 5;
+}
+
+/* ===================== */
+/* Dark Mode Toggle */
+/* ===================== */
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* ===================== */
+/* Loader Spinner */
+/* ===================== */
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 1rem auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===================== */
+/* Mobile Responsive Tweaks */
+/* ===================== */
+@media (max-width: 600px) {
+  .url-input {
+    width: 90%;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tabs button {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+}
+
+/* ===================== */
+/* Home Tab Content Styling */
+/* ===================== */
+.home-container {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .home-container {
+  background-color: rgba(30, 30, 30, 0.9);
+  color: #fff;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+  color: #007bff;
+}
+
+.dark-mode .section-title {
+  color: #66b2ff;
+  border-color: #66b2ff;
+}
+
+.section-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.section-paragraph a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.section-paragraph a:hover {
+  text-decoration: underline;
+}
+
+/* ===================== */
+/* Corner Message Styles */
+/* ===================== */
+.corner-message {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 5px;
+  animation: cornerMessageAnimation 5s linear infinite;
+  z-index: 1000;
+}
+
+@keyframes cornerMessageAnimation {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-10px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ===================== */
+/* URL Status Highlighting */
+/* ===================== */
+.url-status-safe {
+  background-color: #28a745; /* Green for safe */
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.url-status-phishing {
+  background-color: #dc3545; /* Red for phishing */
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+/* ===================== */
+/* URL Checker Styling Updates */
+/* ===================== */
+.url-checker {
+  padding: 2rem;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.url-checker input:invalid {
+  border-color: #dc3545; /* Red border for invalid URLs */
+}
+
+.url-checker input:valid {
+  border-color: #28a745; /* Green border for valid URLs */
+}
+
+.url-checker .check-btn {
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.url-checker .check-btn:hover {
+  background-color: #0056b3;
+}
+
+.url-checker .check-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Default style */
+.default-style {
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Green theme for Legitimate */
+.legitimate-style {
+  background-color: #d4edda; /* light green */
+  color: #155724; /* dark green text */
+}
+
+/* Red theme for Phishing */
+.phishing-style {
+  background-color: #f8d7da; /* light red */
+  color: #721c24; /* dark red text */
+}
+
+/* Yellow-ish theme for Errors */
+.error-style {
+  background-color: #fff3cd; /* light yellow */
+  color: #856404; /* dark yellow/brownish text */
+}
