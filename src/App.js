@@ -5,6 +5,16 @@ import HomeContent from './HomeContent';
 import AnalyzeContent from './AnalyzeContent';
 import ContactContent from './ContactContent';
 
+// ✅ URL validation function
+const isValidURL = (string) => {
+  try {
+    new URL(string);
+    return true;
+  } catch (_) {
+    return false;
+  }
+};
+
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
@@ -21,11 +31,19 @@ export default function App() {
   const handleUserMessage = async () => {
     if (!input.trim()) return;
 
+    // ✅ Validate URL before sending
+    if (!isValidURL(input.trim())) {
+      setMessages(prev => [...prev, { sender: "bot", text: "⚠️ Please enter a valid URL." }]);
+      setInput("");
+      return;
+    }
+
     const userMessage = { sender: "user", text: input };
     setMessages(prev => [...prev, userMessage]);
 
     try {
-      const res = await fetch("http://localhost:5000/chat", {
+      // Use your deployed backend URL here
+      const res = await fetch("https://phishnetguard-backend.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input }),
@@ -47,7 +65,6 @@ export default function App() {
     }
   };
 
-  // Set this as the background for all tabs
   const backgroundImage = "https://blog.knowbe4.com/hubfs/phishing-1.jpg"; 
 
   return (
@@ -55,7 +72,7 @@ export default function App() {
       <div
         className={darkMode ? "dark-mode" : ""}
         style={{
-          backgroundImage: `url(${backgroundImage})`, // Corrected template literal syntax
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundAttachment: 'fixed',
           height: "100vh",
@@ -73,12 +90,10 @@ export default function App() {
           <Route path="/contact" element={<ContactContent />} />
         </Routes>
 
-        {/* Chat button to toggle window */}
         <div className="chatbot" onClick={() => setChatOpen(prev => !prev)}>
           💬
         </div>
 
-        {/* Chat popup window */}
         {chatOpen && (
           <div style={chatWindowStyle}>
             <div style={chatMessagesStyle}>
@@ -128,7 +143,6 @@ export default function App() {
   );
 }
 
-// Simple inline styles for chat UI
 const chatWindowStyle = {
   position: "fixed",
   bottom: "80px",
